@@ -15,6 +15,7 @@
 ### 配置  
 资源工具->资源管理配置窗口  
 <img width="186" alt="res_in" src="https://user-images.githubusercontent.com/18462688/142002483-34a79659-b77f-47f6-ab0b-f69df61368f2.png">  
+
 目前资源管理系统并不依赖于assetbundle name，所以并不需要去配置这玩意儿。  
 只需要将这些需要动态加载的文件所属文件夹配置进去即可，所以文件夹内的文件都会打包进bundle  
 <img width="778" alt="build_config" src="https://user-images.githubusercontent.com/18462688/141997057-dc26846c-9360-47a1-ab2e-8309696a6178.png">  
@@ -64,12 +65,23 @@
  隐藏Window  
  UIMgr.Hide<WindowName>();
  
- ##消息系统(另有带参数的接口)  
+ ## 消息系统(另有带参数的接口)  
  监听  
  MsgSystem.Instance.AddListener("eventName", function);  
  移除监听  
  MsgSystem.Instance.RemoveListener("eventName", function);    
  Post消息  
  MsgSystem.Instance.PostMessage("eventName");  
+ 
+ ## 声音  
+ Aud.PlaySfx("soundName");  
+ Aud.PlayBgm("BgmName");  
+ 
+ ## 其他工具  
+ <img width="316" alt="toolsart" src="https://user-images.githubusercontent.com/18462688/142007036-b3582917-0f8f-4921-93a6-64421bcd64d5.png">  
+ <img width="420" alt="toolstex" src="https://user-images.githubusercontent.com/18462688/142007178-e932e8de-0919-4a0b-bc0a-943c0de884cf.png">
+
+
+ 
  
  
