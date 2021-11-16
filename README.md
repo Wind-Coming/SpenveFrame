@@ -7,8 +7,10 @@
 3，Odin 也算是老牌插件了，开发工具什么的都比较方便。  
 4，Reporter，真机查看log比较方便。  
 
-## 资源配置系统  
-资源配置系统是用了unity原先的assetbundle插件进行修改的。  
+## 资源管理系统
+这套资源管理的使用方式类似Addressable，但是没有那么复杂的代码，支持同步合异步，项目资源管理起来也比较方便。  
+但需要注意的是所有需要动态加载的文件不能重名。（当然重名了会有提示）  
+资源配置工具是用了unity原先的assetbundle插件进行修改的。  
 
 ### 配置
 目前资源管理系统并不依赖于assetbundle name，所以并不需要去配置这玩意儿。  
@@ -17,4 +19,15 @@
 
 ### 打包资源  
 如果是第一次打包备份一份md5，后续制作热更新可以自动检测并生成热更新包，运行时资源加载将与底层资源管理完全分离。
-<img width="778" alt="buildbundle" src="https://user-images.githubusercontent.com/18462688/141997912-8a84da4e-7ee4-408a-ae5e-fb31a46dddb8.png">
+<img width="778" alt="buildbundle" src="https://user-images.githubusercontent.com/18462688/141997912-8a84da4e-7ee4-408a-ae5e-fb31a46dddb8.png">  
+
+### 加载  
+加载prefab：GameObject go = Pool.LoadGo(string address);  
+卸载prefab: Pool.Unload(go);  
+
+加载不需要实利化的资源（比如图片，声音等）：  
+1，如果是常驻内存的资源可以使用：ResLoader.Global.LoadAsset<Type>(string address)  
+2，需要是需要卸载的资源可以使用.   
+ ResLoader rl = ResLoader.Get();  
+ Type xxx = rl.LoadAsset<Type>(string address);  
+ 卸载时直接调用:ResLoader.Release(rl)即可，这句代码将会卸载所有rl加载过的资源。  
