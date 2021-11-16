@@ -12,7 +12,9 @@
 但需要注意的是所有需要动态加载的文件不能重名。（当然重名了会有提示）  
 资源配置工具是用了unity原先的assetbundle插件进行修改的。  
 
-### 配置
+### 配置  
+资源工具->资源管理配置窗口  
+<img width="186" alt="res_in" src="https://user-images.githubusercontent.com/18462688/142002483-34a79659-b77f-47f6-ab0b-f69df61368f2.png">  
 目前资源管理系统并不依赖于assetbundle name，所以并不需要去配置这玩意儿。  
 只需要将这些需要动态加载的文件所属文件夹配置进去即可，所以文件夹内的文件都会打包进bundle  
 <img width="778" alt="build_config" src="https://user-images.githubusercontent.com/18462688/141997057-dc26846c-9360-47a1-ab2e-8309696a6178.png">  
@@ -31,3 +33,43 @@
  ResLoader rl = ResLoader.Get();  
  Type xxx = rl.LoadAsset<Type>(string address);  
  卸载时直接调用:ResLoader.Release(rl)即可，这句代码将会卸载所有rl加载过的资源。  
+ 
+ 有时候需要在Editor下调试Bundle，可以勾上模拟bundle模式  
+ 资源工具->模拟bundle模式  
+ <img width="183" alt="simulate" src="https://user-images.githubusercontent.com/18462688/142002244-46713f0c-ee75-4d7a-abea-2a596f751648.png">  
+ 
+ 
+## UI系统
+ 使用Fgui直接导出脚本，框架中将以Window的形式使用一个界面的Component  
+ ```
+ public class WindowName : UIWindowBase
+ {
+    private ComponentName uiCom;
+
+    protected override void OnInit()
+    {
+        base.OnInit();
+
+        packageName.BindAll();
+        UIMgr.AddPackage("packageName");
+
+        uiCom = ComponentName.CreateInstance();
+        this.contentPane = uiCom.asCom;
+        this.contentPane.MakeFullScreen();
+    }
+ }
+ ```
+ 打开Window  
+ UIMgr.Show<WindowName>();  
+ 隐藏Window  
+ UIMgr.Hide<WindowName>();
+ 
+ ##消息系统(另有带参数的接口)  
+ 监听  
+ MsgSystem.Instance.AddListener("eventName", function);  
+ 移除监听  
+ MsgSystem.Instance.RemoveListener("eventName", function);    
+ Post消息  
+ MsgSystem.Instance.PostMessage("eventName");  
+ 
+ 
