@@ -1,6 +1,7 @@
 Library
 Temp
 Logs
+Obj
 .idea
 *.sln
 *.DS_Store
