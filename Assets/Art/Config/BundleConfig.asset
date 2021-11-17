@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f740755f3aee6b2489ea7669349c6007, type: 3}
   m_Name: BundleConfig
   m_EditorClassIdentifier: 
-  allBundle: []
+  allBundle:
+  - bundleName: config
+    paths:
+    - Assets/Art/Config
+    split: 0
+    includeChildFolder: 0

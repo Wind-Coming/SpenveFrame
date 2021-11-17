@@ -8,7 +8,7 @@ using System.IO;
 
 public class ED_CheckUnusedGfx : EditorWindow
 {
-    [MenuItem("Tools/检查没有引用到的特效", false, 71)]
+    [MenuItem("Tools/美术工具/检查没有引用到的特效", false)]
 
     static void Initialize()
     {

@@ -35,19 +35,19 @@ public class PackTest : Editor
     //     BuildPipeline.BuildAssetBundles(outputPath, abbs, opt, target);
     // }
 
-    [MenuItem("Tools/清除所有BundleName", priority = 2051)]
-    static void set()
-    {
-        string[] bds = AssetDatabase.GetAllAssetBundleNames();
-        for (int i = 0; i < bds.Length; i++)
-        {
-            var path = AssetDatabase.GetAssetPathsFromAssetBundle(bds[i]);
-            foreach (var VARIABLE in path)
-            {
-                AssetImporter ai = AssetImporter.GetAtPath(VARIABLE );
-                ai.assetBundleName = "";
-            }
-        }
-        AssetDatabase.Refresh();
-    }
+    // [MenuItem("Tools/清除所有BundleName", priority = 2051)]
+    // static void set()
+    // {
+    //     string[] bds = AssetDatabase.GetAllAssetBundleNames();
+    //     for (int i = 0; i < bds.Length; i++)
+    //     {
+    //         var path = AssetDatabase.GetAssetPathsFromAssetBundle(bds[i]);
+    //         foreach (var VARIABLE in path)
+    //         {
+    //             AssetImporter ai = AssetImporter.GetAtPath(VARIABLE );
+    //             ai.assetBundleName = "";
+    //         }
+    //     }
+    //     AssetDatabase.Refresh();
+    // }
 }
