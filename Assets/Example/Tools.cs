@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Tools : MonoBehaviour
 {
@@ -18,6 +20,14 @@ public class Tools : MonoBehaviour
             g.transform.position = new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
             g.AddComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
             g.AddComponent<MeshRenderer>().sharedMaterial = mats[Random.Range(0, mats.Length)];
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Generate();
         }
     }
 }
